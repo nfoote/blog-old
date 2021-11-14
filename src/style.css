@@ -60,6 +60,11 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+
+  /* Theme Switching */
+  --white: rgb(255, 255, 255);
+  --black: #282c35;
+  --transition: 0.3s ease-out;
 }
 
 /* HTML elements */
@@ -81,6 +86,17 @@ body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
+
+  /* Theme Switching */
+  transition: var(--transition);
+  background-color: var(--white);
+}
+
+body.dark {
+  transition: var(--transition);
+  background-color: var(--black);
+  color: aliceblue;
+  -webkit-font-smoothing: antialiased;
 }
 
 footer {

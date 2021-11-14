@@ -8,6 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import Emoji from "./emoji"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -44,10 +45,12 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
+          Written by <strong>{author.name}</strong> {author?.summary} 
+          <Emoji symbol="🦘" style={{paddingRight: 1, paddingLeft: 1}} label="Kangaroo"/>
+          <Emoji symbol="🇦🇺" style={{paddingRight: 1, paddingLeft: 1}} label="Australian flag"/>
           {` `}
           <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+            Follow me on Twitter
           </a>
         </p>
       )}

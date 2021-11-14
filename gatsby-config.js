@@ -1,17 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `nickfoote.net`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Nick Foote`,
+      summary: `who lives and works in Australia`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `My personal blog.`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `nickfoote`,
     },
   },
   plugins: [
+    'gatsby-plugin-dark-mode',
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
