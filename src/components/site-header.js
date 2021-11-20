@@ -8,9 +8,8 @@ return(
     <>
         <h1 className={props.className}>
             <Link to="/">{props.title}</Link>
+            <ThemeToggle className="theme-toggle"  />
         </h1>
-
-        <ThemeToggle  />
     </>
  )
 }
