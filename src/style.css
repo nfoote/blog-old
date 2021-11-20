@@ -54,6 +54,7 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
+    /* Light Theme Colour Palette */
   --color-primary: #005b99;
   --color-text: #2e353f;
   --color-text-light: #4f5969;
@@ -93,10 +94,15 @@ body {
 }
 
 body.dark {
+  /* Dark Theme Colour Palette */
   transition: var(--transition);
   background-color: var(--black);
   color: aliceblue;
+  --color-primary: #6cc1fb;
+  --color-heading-black: rgb(240, 240, 240);
   -webkit-font-smoothing: antialiased;
+  --color-text-light: #96a0af;
+  --color-heading: #94aee1;
 }
 
 footer {
@@ -275,7 +281,7 @@ a:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: var(--fontSize-3);
 }
 .main-heading > label {
   font-size: 1rem !important;
@@ -289,7 +295,7 @@ a:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: var(--fontSize-3);
 }
 
 .header-link-home > label {

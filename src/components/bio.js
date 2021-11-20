@@ -50,6 +50,7 @@ const Bio = () => {
           <Emoji symbol="🇦🇺" style={{paddingRight: 1, paddingLeft: 1}} label="Australian flag"/>
           {` `}
           <a href={`https://twitter.com/${social?.twitter || ``}`}>
+            <br />
             Follow me on Twitter
           </a>
         </p>
