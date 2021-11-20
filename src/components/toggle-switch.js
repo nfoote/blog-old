@@ -18,7 +18,10 @@ const ToggleSwitch = ({ isChecked, onThemeSwitch }) => {
           offColor="#000000"
           onColor="#000000"
           uncheckedIcon={<Emoji symbol="🌞" label="Sun"/>} 
-          checkedIcon={<Emoji symbol="🌙" label="Moon"/>} />
+          checkedIcon={<Emoji symbol="🌙" label="Moon"/>} 
+          height={24}
+          width={52}
+        />
       </label>
     );
 }
