@@ -5,6 +5,7 @@ import { useIntersect, Image, ScrollControls, Scroll } from '@react-three/drei'
 import { Text } from '@react-three/drei'
 import diagram from '../images/svg/diagram-v2.svg'
 import frontPageContent from '../resources/front-page-content.json'
+import Emoji from './emoji'
 
 function Item({ url, scale, ...props }) {
   const visible = useRef(false)
@@ -45,7 +46,7 @@ function Caption({ children }) {
     const { width } = useThree((state) => state.viewport)
     return (
       <Text
-        position={[0, .5, 0]}
+        position={[0, 1, 0]}
         lineHeight={0.8}
         font="/Montserrat.ttf"
         scale={[0.7,0.7,0.7]}
@@ -105,7 +106,7 @@ function Caption({ children }) {
       return (
         <>
           <div style={defaultStyles}>
-            <h1>{heading}</h1> 
+            <h1>{heading}</h1>
             <p>{paragraph1}</p>
             {paragraph2 && <p>{paragraph2}</p>}
             {children && children}
@@ -116,7 +117,7 @@ function Caption({ children }) {
 
   const CardContainer = ({children}) => {
     const style = {
-      marginTop: '40vh'
+      marginTop: '30vh'
     }
     return(
       <div className="global-wrapper" style={style}>
@@ -128,7 +129,7 @@ function Caption({ children }) {
 function ScrollSection ({ blogPost }) {
     const { width: w, height: h } = useThree((state) => state.viewport)
     return(
-        <ScrollControls damping={6} pages={5} position={0,0,-1000} >
+        <ScrollControls damping={6} pages={4} position={0,0,-1000} >
             <Scroll>
                 <Caption>{"Nick \nFoote"}</Caption>
             </Scroll>

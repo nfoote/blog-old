@@ -9,7 +9,13 @@ import Layout from "../components/layout"
 
 const BlogPost = ({recentPost: post}) => {
   const title = post.frontmatter.title || post.fields.slug
+  const style = {
+    border: '1px solid #ffffff5e',
+    padding: '10px',
+    borderRadius: '10px'
+  }
   return(<article
+  style={style}
   className="post-list-item"
   itemScope
   itemType="http://schema.org/Article"
@@ -44,7 +50,6 @@ const Index = ({ data, location }) => {
         <Suspense fallback={null}>
               <div style={{height: height, width: width}}> 
                 <AppNoodle blogPost={<BlogPost recentPost={recentPost} />} />
-                <Overlay />
               </div>
           </Suspense>
         </>
