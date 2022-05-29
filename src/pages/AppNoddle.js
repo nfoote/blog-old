@@ -9,34 +9,15 @@ import Noodles from './Noodles'
 import React from 'react'
 import ScrollSection  from '../components/scroll-section';
 
-export default function AppNoodle() {
+export default function AppNoodle({blogPost}) {
   return (
     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 22 }}>
-
         <Physics gravity={[0,0,0]}>
             <Noodles />
         </Physics>
-        
         <Bg />
-        <ScrollSection />
-
+        <ScrollSection blogPost={blogPost} />
     </Canvas>
-  )
-}
-
-function Caption({ children }) {
-  const { width } = useThree((state) => state.viewport)
-  return (
-    <Text
-      position={[0, 0, -5]}
-      lineHeight={0.8}
-      font="/Ki-Medium.ttf"
-      fontSize={width / 8}
-      material-toneMapped={false}
-      anchorX="center"
-      anchorY="middle">
-      {children}
-    </Text>
   )
 }
 

@@ -6,44 +6,13 @@ import { Text } from '@react-three/drei'
 import diagram from '../images/svg/diagram-v2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 
-
-function HeadingCaption ({...props}) {
-    const visible = useRef(false)
-    const ref = useIntersect((isVisible) => (visible.current = isVisible))
-    const { height, width } = useThree((state) => state.viewport)
-    useFrame((state, delta) => {
-      ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
-      ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 4, delta)
-    })
-
-
-    return (
-        <group {...props}>
-        <Text
-        ref={ref}
-        //position={[0, .5, 0]}
-        //position={-width / 6, 0, 0}
-        lineHeight={0.8}
-        font="/Montserrat.ttf"
-        scale={[0.7,0.7,0.7]}
-        fontSize={width / 6}
-        material-toneMapped={false}
-        anchorX="center"
-        anchorY="middle"
-        >
-        {"Nick \nFoote"}      
-        </Text>
-        </group>
-    )
-}
-
 function Item({ url, scale, ...props }) {
   const visible = useRef(false)
   const ref = useIntersect((isVisible) => (visible.current = isVisible))
   const { height } = useThree((state) => state.viewport)
   useFrame((state, delta) => {
     ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
-    ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 4, delta)
+    ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 2, delta)
   })
   return (
     <group {...props}>
@@ -57,7 +26,7 @@ function Items() {
   const { width: w, height: h } = useThree((state) => state.viewport)
   return (
     <Scroll>
-      {/* <Item url="/blue.png" scale={[w / 3, w / 3, 1]} position={[-w / 6, 0, 0]} /> */}
+    {/* <Item url="/blue.png" scale={[w / 3, w / 3, 1]} position={[w / 4, -14, 0]} />  */}
       {/* <Item url="/blue.png" scale={[2, w / 3, 1]} position={[w / 30, -h, 0]} />
       <Item url="/blue.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 1, 0]} />
       <Item url="/blue.png" scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} /> */}
@@ -90,48 +59,111 @@ function Caption({ children }) {
     )
   }
 
-  const Card = ({styles, content}) => {
+  const Form = () => {
+    const form = { // TODO: Move this to style.css
+      display: 'flex',
+      margin: '2rem 0',
+      justifyContent: 'center',
+      flexDirection: 'column'
+    };
+    const formRow = {
+      display: 'block',
+      width: '100%',
+      borderRadius: '5px',
+      lineHeight: '2rem'
+    }
+    return(
+      <form method="post" action="https://getform.io/{your-unique-getform-endpoint}">
+        <div style={form}>
+            <label>
+              Name
+              <input style={formRow} type="text" name="name" />
+            </label>
+            <label style={{marginTop: '1rem'}} >
+              Email
+              <input style={formRow} type="email" name="email" />
+            </label>
+            <label style={{marginTop: '1rem'}}>
+              Message
+              <textarea style={formRow} name="message"  rows="4">
+               </textarea>
+            </label>
+            <button style={{marginTop: '2rem'}} >Send</button>
+        </div>
+      </form>
+    )
+  }
+
+  const Card = ({styles, content, children}) => {
     const { heading, paragraph1, paragraph2 } = content;
     const defaultStyles = {
-        position: 'absolute', // TODO: flex layout if possible
         background: '#232a2fbd',
-        padding: '10px',
+        padding: '16px',
         borderRadius: '25px',
-        margin: '10px',
         ...styles
     }
       return (
-        <div style={defaultStyles}>
-        <h1>{heading}</h1> 
-        <p>{paragraph1}</p>
-        {paragraph2 && <p>{paragraph2}</p>}
-    </div>)
+        <>
+          <div style={defaultStyles}>
+            <h1>{heading}</h1> 
+            <p>{paragraph1}</p>
+            {paragraph2 && <p>{paragraph2}</p>}
+            {children && children}
+          </div>
+        </>
+      );
   }
 
-function ScrollSection () {
+  const CardContainer = ({children}) => {
+    const style = {
+      marginTop: '40vh'
+    }
+    return(
+      <div className="global-wrapper" style={style}>
+        {children}
+      </div>
+    );
+  }
+
+function ScrollSection ({ blogPost }) {
     const { width: w, height: h } = useThree((state) => state.viewport)
     return(
-        <ScrollControls damping={6} pages={10} position={0,0,-1000} >
+        <ScrollControls damping={6} pages={5} position={0,0,-1000} >
             <Scroll>
-                {/* <HeadingCaption position={[-w / 6, 0, 0]} /> */}
                 <Caption>{"Nick \nFoote"}</Caption>
             </Scroll>
             <Scroll html style={{ width: '100%' }}>
-                <img src={diagram} scale={[w / 1.8, w / 1.8, 1]}
-                    style={{ position: 'absolute', top: '45vh', right: '20vw', left: '20vw' }} 
+              {/* <h1>Nick Foote</h1> */}
+                <CardContainer>
+                <img src={diagram} scale={[w / 2, w / 2, 1]}
+                    style={{
+                      overflow: 'hidden',
+                      objectPosition: '50% 50%',
+                      objectFit: 'cover',
+                      maxWidth: '100%',
+                      minHeight: '100%',
+                      width: 'auto',
+                      height: 'auto',
+                    }} 
                 />
-                <Card 
-                    styles={{left: '20vh', right: '20vh', top: '200vh'}} 
-                    content={frontPageContent.about} 
-                />
-                <Card 
-                    styles={{left: '20vh', right: '20vh', top: '300vh'}} 
-                    content={frontPageContent.blog} 
-                />
-                <Card 
-                    styles={{left: '20vh', right: '20vh', top: '400vh'}} 
-                    content={frontPageContent.contact} 
-                />
+                  <Card 
+                      styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
+                      content={frontPageContent.about} />
+                  <Card 
+                      styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
+                      content={frontPageContent.blog} 
+                  >
+                    {blogPost}
+                  </Card>
+                  <Card 
+                      styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
+                      content={frontPageContent.contact} >
+                    <Form />
+                  </Card>
+                </CardContainer>
+            </Scroll>
+            <Scroll>
+                <Items />
             </Scroll>
         </ScrollControls>)
 }
