@@ -12,47 +12,52 @@ const BlogPost = ({recentPost: post}) => {
   const style = {
     border: '1px solid #ffffff5e',
     padding: '10px',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    backgroundColor: 'rgb(35 42 47 / 95%)'
   }
-  return(<article
-  style={style}
-  className="post-list-item"
-  itemScope
-  itemType="http://schema.org/Article"
->
-  <header>
-    <h2>
-      <Link to={post?.fields.slug} itemProp="url">
-        <span itemProp="headline">{title}</span>
-      </Link>
-    </h2>
-    <small>{post?.frontmatter.date}</small>
-  </header>
-  <section>
-    <p
-      dangerouslySetInnerHTML={{
-        __html: post?.frontmatter.description || post?.excerpt,
-      }}
-      itemProp="description"
-    />
-  </section>
-</article>)
+  return(
+    <>
+      <h1 style={{fontSize: '1.5rem', fontStyle: 'italic'}}>Recent Post</h1>
+      <article
+        style={style}
+        className="post-list-item"
+        itemScope
+        itemType="http://schema.org/Article"
+      >
+        <header>
+          <h2>
+            <Link to={post?.fields.slug} itemProp="url">
+              <span itemProp="headline">{title}</span>
+            </Link>
+          </h2>
+          <small>{post?.frontmatter.date}</small>
+        </header>
+        <section>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: post?.frontmatter.description || post?.excerpt,
+            }}
+            itemProp="description"
+          />
+        </section>
+      </article>
+    </>
+  )
 }
-
 
 const Index = ({ data, location }) => {
     const { height, width } = useWindowDimensions();
     const recentPost = data.allMarkdownRemark.nodes[0];
-      const siteTitle = data.site.siteMetadata.title
+    const siteTitle = data.site.siteMetadata.title
 
     return(
-        <>
+      <>
         <Suspense fallback={null}>
-              <div style={{height: height, width: width}}> 
-                <AppNoodle blogPost={<BlogPost recentPost={recentPost} />} />
-              </div>
-          </Suspense>
-        </>
+          <div style={{height: height, width: width}}> 
+            <AppNoodle blogPost={<BlogPost recentPost={recentPost} />} />
+          </div>
+        </Suspense>
+      </>
     )
 }
 

@@ -61,6 +61,7 @@ function Caption({ children }) {
   }
 
   const Form = () => {
+    console.log(process.env.GATSBY_GET_FORM)
     const form = { // TODO: Move this to style.css
       display: 'flex',
       margin: '2rem 0',
@@ -74,7 +75,7 @@ function Caption({ children }) {
       lineHeight: '2rem'
     }
     return(
-      <form method="post" action="https://getform.io/{your-unique-getform-endpoint}">
+      <form method="post" action={`https://getform.io/f/${process.env.GATSBY_GET_FORM}`}>
         <div style={form}>
             <label>
               Name
@@ -145,7 +146,7 @@ function ScrollSection ({ blogPost }) {
                       minHeight: '100%',
                       width: 'auto',
                       height: 'auto',
-                    }} 
+                  }} 
                 />
                   <Card 
                       styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
@@ -162,9 +163,6 @@ function ScrollSection ({ blogPost }) {
                     <Form />
                   </Card>
                 </CardContainer>
-            </Scroll>
-            <Scroll>
-                <Items />
             </Scroll>
         </ScrollControls>)
 }
