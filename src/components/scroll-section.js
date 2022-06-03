@@ -61,7 +61,6 @@ function Caption({ children }) {
   }
 
   const Form = () => {
-    console.log(process.env.GATSBY_GET_FORM)
     const form = { // TODO: Move this to style.css
       display: 'flex',
       margin: '2rem 0',
@@ -90,7 +89,7 @@ function Caption({ children }) {
               <textarea style={formRow} name="message"  rows="4">
                </textarea>
             </label>
-            <button style={{marginTop: '2rem'}} >Send</button>
+            <button className="button-30" style={{marginTop: '2rem'}} >Send</button>            
         </div>
       </form>
     )
@@ -158,7 +157,7 @@ function ScrollSection ({ blogPost }) {
                     {blogPost}
                   </Card>
                   <Card 
-                      styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
+                      styles={{ marginTop: '20vh', marginBottom: '10vh', padding: '35px'}} 
                       content={frontPageContent.contact} >
                     <Form />
                   </Card>
