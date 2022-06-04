@@ -4,16 +4,10 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import  Scene from "./Scene"
-import { Canvas } from 'react-three-fiber'
-import TestBoundry from "./TestBoundry"
-import TestBorder from "./TestBorder"
-import useWindowDimensions from "../hooks/useWindowDimensions"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const { height, width } = useWindowDimensions();
 
   if (posts.length === 0) {
     return (

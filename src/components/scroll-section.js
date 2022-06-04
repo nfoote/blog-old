@@ -1,46 +1,9 @@
-import * as THREE from 'three'
-import React, { useRef } from 'react'
-import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber'
-import { useIntersect, Image, ScrollControls, Scroll } from '@react-three/drei'
+import React from 'react'
+import { useThree } from '@react-three/fiber'
+import { ScrollControls, Scroll } from '@react-three/drei'
 import { Text } from '@react-three/drei'
 import diagram from '../images/svg/diagram-v2.svg'
 import frontPageContent from '../resources/front-page-content.json'
-import Emoji from './emoji'
-
-function Item({ url, scale, ...props }) {
-  const visible = useRef(false)
-  const ref = useIntersect((isVisible) => (visible.current = isVisible))
-  const { height } = useThree((state) => state.viewport)
-  useFrame((state, delta) => {
-    ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
-    ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 2, delta)
-  })
-  return (
-    <group {...props}>
-      <Image ref={ref} scale={scale} url={url} >
-      </Image>
-    </group>
-  )
-}
-
-function Items() {
-  const { width: w, height: h } = useThree((state) => state.viewport)
-  return (
-    <Scroll>
-    {/* <Item url="/blue.png" scale={[w / 3, w / 3, 1]} position={[w / 4, -14, 0]} />  */}
-      {/* <Item url="/blue.png" scale={[2, w / 3, 1]} position={[w / 30, -h, 0]} />
-      <Item url="/blue.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 1, 0]} />
-      <Item url="/blue.png" scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} /> */}
-
-      {/* <Item url="/diagram.svg" scale={[w / 2.8, w / 2.8, 1]} position={[0, -h * 1.3, 0]} /> */}
-      {/* <Item url="/blue.png" scale={[w / 5, w / 5, 1]} position={[-w / 6, -h * 2, 0]} /> */}
-
-      {/* <Item url="/blue.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} />
-      <Item url="/blue.png" scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} />
-      <Item url="/blue.png" scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} /> */}
-    </Scroll>
-  )
-}
 
 function Caption({ children }) {
     const { width } = useThree((state) => state.viewport)
@@ -106,8 +69,8 @@ function Caption({ children }) {
       return (
         <>
           <div style={defaultStyles}>
-            <h1>{heading}</h1>
-            <p>{paragraph1}</p>
+            {heading && <h1>{heading}</h1>}
+            {paragraph1 && <p>{paragraph1}</p>}
             {paragraph2 && <p>{paragraph2}</p>}
             {children && children}
           </div>
@@ -127,26 +90,14 @@ function Caption({ children }) {
   }
 
 function ScrollSection ({ blogPost }) {
-    const { width: w, height: h } = useThree((state) => state.viewport)
     return(
-        <ScrollControls damping={6} pages={4} position={0,0,-1000} >
+        <ScrollControls damping={6} pages={4.5} position={0,0,-1000} >
             <Scroll>
                 <Caption>{"Nick \nFoote"}</Caption>
             </Scroll>
             <Scroll html style={{ width: '100%' }}>
-              {/* <h1>Nick Foote</h1> */}
                 <CardContainer>
-                <img src={diagram} scale={[w / 2, w / 2, 1]}
-                    style={{
-                      overflow: 'hidden',
-                      objectPosition: '50% 50%',
-                      objectFit: 'cover',
-                      maxWidth: '100%',
-                      minHeight: '100%',
-                      width: 'auto',
-                      height: 'auto',
-                  }} 
-                />
+                <img src={diagram} />
                   <Card 
                       styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
                       content={frontPageContent.about} />
@@ -161,6 +112,11 @@ function ScrollSection ({ blogPost }) {
                       content={frontPageContent.contact} >
                     <Form />
                   </Card>
+                  {/* <Card 
+                      styles={{ marginTop: '20vh', marginBottom: '10vh', padding: '35px'}} 
+                      content={null}
+                       >
+                  </Card> */}
                 </CardContainer>
             </Scroll>
         </ScrollControls>)

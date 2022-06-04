@@ -1,11 +1,8 @@
 import React from "react"
-import AppNoodle from "./AppNoddle"
+import BallApp from "./BallApp"
 import useWindowDimensions from "../hooks/useWindowDimensions"
-import { ScrollSection } from "../components/scroll-section";
 import { Suspense } from 'react'
-import Background from "../components/background";
 import { Link, graphql } from "gatsby"
-import Layout from "../components/layout"
 
 const BlogPost = ({recentPost: post}) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -54,7 +51,7 @@ const Index = ({ data, location }) => {
       <>
         <Suspense fallback={null}>
           <div style={{height: height, width: width}}> 
-            <AppNoodle blogPost={<BlogPost recentPost={recentPost} />} />
+            <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
         </Suspense>
       </>
