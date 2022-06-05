@@ -51,7 +51,7 @@ const Index = ({ data, location }) => {
       <>
         <Suspense fallback={null}>
           <div style={{height: height, width: width}}> 
-            <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
+            {/* <BallApp blogPost={<BlogPost recentPost={recentPost} />} /> */}
           </div>
         </Suspense>
       </>

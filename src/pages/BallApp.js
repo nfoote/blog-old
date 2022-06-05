@@ -4,7 +4,7 @@ import { Physics } from "@react-three/cannon";
 import { LayerMaterial, Depth, Noise } from 'lamina'
 import Balls from './Balls'
 import React from 'react'
-import ScrollSection  from '../components/scroll-section';
+import FrontPageContent  from '../components/front-page-content';
 
 export default function BallApp({blogPost}) {
   return (
@@ -13,7 +13,7 @@ export default function BallApp({blogPost}) {
             <Balls />
         </Physics>
         <Bg />
-        <ScrollSection blogPost={blogPost} />
+        <FrontPageContent blogPost={blogPost} />
     </Canvas>
   )
 }
