@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useState } from 'react';
 import BallApp from "./BallApp"
 import useWindowDimensions from "../hooks/useWindowDimensions"
 import { Suspense } from 'react'
 import { Link, graphql } from "gatsby"
+import Burger from "../components/menu/Burger/Burger"
+import Menu from "../components/menu/Menu/Menu"
 
 const BlogPost = ({recentPost: post}) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -46,14 +48,22 @@ const Index = ({ data, location }) => {
     const { height, width } = useWindowDimensions();
     const recentPost = data.allMarkdownRemark.nodes[0];
     const siteTitle = data.site.siteMetadata.title
+    const [open, setOpen] = useState(false);
 
     return(
       <>
         <Suspense fallback={null}>
           <div style={{height: height, width: width}}> 
-            {/* <BallApp blogPost={<BlogPost recentPost={recentPost} />} /> */}
+            <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
         </Suspense>
+        <div>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
+  
+
+
       </>
     )
 }
@@ -61,8 +71,8 @@ const Index = ({ data, location }) => {
 function Overlay() {
   return (
     <div style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', width: '100%', height: '100%' }}>
-      <div style={{ position: 'absolute', top: 40, right: 40, fontSize: '13px' }}>About</div> 
-      <div style={{ position: 'absolute', bottom: 40, right: 40, fontSize: '13px' }}>_</div>
+      {/* <div style={{ position: 'absolute', top: 40, right: 40, fontSize: '13px' }}>About</div>  */}
+      {/* <div style={{ position: 'absolute', bottom: 40, right: 40, fontSize: '13px' }}>_</div> */}
     </div>
   )
 }

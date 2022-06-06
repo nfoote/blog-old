@@ -8,7 +8,10 @@ import github from '../images/svg/github.svg'
 import linkedin from '../images/svg/linkedin.svg'
 import resume from '../images/svg/resume.svg'
 
+
 import frontPageContent from '../resources/front-page-content.json'
+import Burger from './menu/Burger/Burger'
+import Menu from './menu/Menu/Menu' //fix this dumb import
 
 function Caption({ children }) {
   const { width } = useThree((state) => state.viewport)
@@ -99,11 +102,17 @@ const CardContainer = ({children}) => {
 
 function FrontPageContent ({ blogPost }) {
     return(
-        <ScrollControls damping={6} pages={4.6} position={0,0,-1000} >
+        <ScrollControls damping={6} pages={4.2} position={0,0,-1000} >
+          {/* <Scroll html>
+            <Burger />
+          </Scroll> */}
             <Scroll>
                 <Caption>{"Nick \nFoote"}</Caption>
             </Scroll>
             <Scroll html style={{ width: '100%' }}>
+
+            {/* <Menu /> */}
+
                 <CardContainer>
                   <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
                   <Card 
