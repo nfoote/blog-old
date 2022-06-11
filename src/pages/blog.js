@@ -5,7 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogIndex = ({ data, location }) => {
+const Blog = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
@@ -25,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
 
-  <Layout location={location} title={siteTitle}>
+<Layout location={location} title={siteTitle}>
 <Seo title="All posts" />
       <Bio /> 
        <ol style={{ listStyle: `none` }}>
@@ -64,7 +64,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default Blog
 
 export const pageQuery = graphql`
   query {

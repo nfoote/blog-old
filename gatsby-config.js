@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 
 module.exports = {
+  plugins: [`gatsby-plugin-styled-components`],
   siteMetadata: {
     title: `nickfoote.net`,
     author: {
@@ -13,6 +14,8 @@ module.exports = {
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
     social: {
       twitter: `nickfoote`,
+      linkedin: `nick-foote-17008288`,
+      github: `nfoote`
     },
   },
   plugins: [

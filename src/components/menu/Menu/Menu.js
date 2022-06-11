@@ -1,22 +1,56 @@
 
+import { Link } from 'gatsby';
 import React from 'react';
+import Emoji from '../../emoji';
+import { StyledMenu } from './Menu.styled';
+import { useStaticQuery, graphql } from "gatsby"
+import linkedin from '../../../images/svg/linkedin.svg'
+import github from '../../../images/svg/github.svg'
 
 const Menu = ({open}) => {
+  const data = useStaticQuery(graphql`
+    query MenuQuery {
+      site {
+        siteMetadata {
+          social {
+            linkedin,
+						github
+          }
+        }
+      }
+    }
+  `)
+
+	const author = data.site.siteMetadata?.author
+  const social = data.site.siteMetadata?.social
+
   return (
-    <nav style={{transform: open ? 'translateX(0)' : 'translateX(-100%)'}} className="styledNav">
-      <a href="/">
-        <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
-        About us
-      </a>
-      <a href="/">
-        <span role="img" aria-label="price">&#x1f4b8;</span>
-        Pricing
-        </a>
-      <a href="/">
-        <span role="img" aria-label="contact">&#x1f4e9;</span>
-        Contact
-        </a>
-    </nav>
+    <StyledMenu open={open}>
+      <Link to="/blog/" itemProp="url">
+				<span role="img" aria-label="Blog">
+						<Emoji symbol="📝" style={{paddingRight: 1, paddingLeft: 1}} label="Blog"/>
+				</span>
+				Blog
+      </Link>
+			<a href={`https://www.github.com/${social?.github || ``}`}>
+				<span style={{ display:'block'}}>
+					<img style={{height: '25px', width: '25px', marginRight: '12px'}}  src={github}></img>
+					GitHub
+				</span>
+			</a>
+			<a href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
+				<span style={{ display:'block'}}>
+					<img style={{height: '25px', width: '25px', marginRight: '12px'}}  src={linkedin}></img>
+					LinkedIn
+				</span>
+			</a>
+			<a href="resume.pdf">
+				<span role="img" aria-label="Resume">
+						<Emoji symbol="📃" style={{paddingRight: 1, paddingLeft: 1}} label="Resume"/>
+				</span>
+				Resume
+			</a>
+    </StyledMenu>
   )
 }
 export default Menu;

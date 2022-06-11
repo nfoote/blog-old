@@ -5,18 +5,11 @@ description: "Useful string things"
 ---
 
 
-
 ```js{1}
-import React from "react"
-import { useSpring, animated } from 'react-spring'
+const reverse = input => input.split('').reverse().join('');
 
 
-const reverse = (input) => {
-    console.log(input)
-}
-
-
-export default Square;
+export default reverse;
 ```
 
 

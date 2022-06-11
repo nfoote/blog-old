@@ -1,12 +1,14 @@
 import React from 'react';
+import { StyledBurger } from './Burger.styled';
+
 
 const Burger = ({open, setOpen}) => {
   return (
-    <button open={open} onClick={() => setOpen(!open)} className="burger">
+    <StyledBurger open={open} onClick={() => setOpen(!open)}>
       <div />
       <div />
       <div />
-    </button>
+    </StyledBurger>
   )
 }
 
