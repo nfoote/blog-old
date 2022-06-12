@@ -57,11 +57,11 @@ const Index = ({ data, location }) => {
     return(
       <>
          <Seo title="Home" />
-         <Suspense fallback={null}> {/*TODO: add a fallback */}
+         {/* <Suspense fallback={null}>
           <div style={{height: '100vh', width: '100vh'}}> 
             <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
-        </Suspense>
+        </Suspense> */}
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
