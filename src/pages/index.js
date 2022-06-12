@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 // import BallApp from "../components/BallApp"
-// import useWindowDimensions from "../hooks/useWindowDimensions"
+import useWindowDimensions from "../hooks/useWindowDimensions"
 // import { useOnClickOutside }  from '../hooks/useOnClickOutside';
 // import { Suspense } from 'react'
 import { Link, graphql } from "gatsby"
