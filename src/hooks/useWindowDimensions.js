@@ -8,6 +8,10 @@ function getWindowDimensions() {
       height
     };
   }
+  return { 
+    width: '100',
+    height:'100'
+  }
 }
 
 const isBrowser = () => typeof window !== "undefined"

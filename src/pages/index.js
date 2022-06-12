@@ -47,7 +47,7 @@ const BlogPost = ({recentPost: post}) => {
 }
 
 const Index = ({ data, location }) => {
-    //const { height, width } = useWindowDimensions();
+    const { height, width } = useWindowDimensions();
     const recentPost = data.allMarkdownRemark.nodes[0];
     const [open, setOpen] = useState(false);
     const node = useRef(); 
