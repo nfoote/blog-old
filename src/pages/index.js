@@ -52,7 +52,7 @@ const Index = ({ data, location }) => {
     const [open, setOpen] = useState(false);
     const node = useRef(); 
 
-    useOnClickOutside(node, () => setOpen(false));
+    //useOnClickOutside(node, () => setOpen(false));
 
     return(
       <>
