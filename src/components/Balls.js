@@ -30,7 +30,7 @@ function Ball() {
       floatIntensity={40} 
       dispose={null}>
        <Sphere
-        castShadow
+        //castShadow
         //material={material}
         //onPointerEnter={(e) => handlePointerEnter(e)}
         //onClick={() => api.mass.set(1000)}

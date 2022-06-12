@@ -84,7 +84,7 @@ const Card = ({styles, content, children}) => {
 
 const CardContainer = ({children}) => {
   const style = {
-    marginTop: '30vh'
+    //marginTop: '30vh'
   }
   return(
     <div className="global-wrapper" style={style}>
@@ -96,11 +96,12 @@ const CardContainer = ({children}) => {
 function FrontPageContent ({ blogPost }) {
     return (
         <ScrollControls damping={6} pages={4.2} position={0,0,-1000} >
-            <Scroll>
+            {/* <Scroll>
                 <Caption>{"Nick \nFoote"}</Caption>
-            </Scroll>
+            </Scroll> */}
             <Scroll html style={{ width: '100%' }}>
                 <CardContainer>
+                  <h1 style={{textAlign: 'center', fontSize: '6rem'}}>Nick Foote</h1>
                   <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
                   <Card 
                       styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
