@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
-// import BallApp from "../components/BallApp"
+import BallApp from "../components/BallApp"
 import useWindowDimensions from "../hooks/useWindowDimensions"
 // import { useOnClickOutside }  from '../hooks/useOnClickOutside';
-// import { Suspense } from 'react'
+import { Suspense } from 'react'
 import { Link, graphql } from "gatsby"
 import Burger from "../components/menu/Burger/Burger"
 import Menu from "../components/menu/Menu/Menu"
@@ -51,17 +51,19 @@ const Index = ({ data, location }) => {
     const recentPost = data.allMarkdownRemark.nodes[0];
     const [open, setOpen] = useState(false);
     const node = useRef(); 
+    const isBrowser = typeof window !== "undefined"
 
     //useOnClickOutside(node, () => setOpen(false));
 
     return(
       <>
          <Seo title="Home" />
-         {/* <Suspense fallback={null}>
-          <div style={{height: '100vh', width: '100vh'}}> 
+         {isBrowser &&
+         <Suspense fallback={null}>
+          <div style={{height: height, width: width}}> 
             <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
-        </Suspense> */}
+        </Suspense>}
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
