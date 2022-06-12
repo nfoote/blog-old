@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import BallApp from "../components/BallApp"
 import useWindowDimensions from "../hooks/useWindowDimensions"
-// import { useOnClickOutside }  from '../hooks/useOnClickOutside';
+import { useOnClickOutside }  from '../hooks/useOnClickOutside';
 import { Suspense } from 'react'
 import { Link, graphql } from "gatsby"
 import Burger from "../components/menu/Burger/Burger"
@@ -53,7 +53,7 @@ const Index = ({ data, location }) => {
     const node = useRef(); 
     const isBrowser = typeof window !== "undefined"
 
-    //useOnClickOutside(node, () => setOpen(false));
+    useOnClickOutside(node, () => setOpen(false));
 
     return(
       <>
@@ -66,7 +66,7 @@ const Index = ({ data, location }) => {
         </Suspense>}
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
+          <Menu open={open} />
         </div>
       </>
     )

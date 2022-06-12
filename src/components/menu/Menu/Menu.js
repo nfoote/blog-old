@@ -14,7 +14,7 @@ const Menu = ({open}) => {
         siteMetadata {
           social {
             linkedin,
-						github
+			github
           }
         }
       }
