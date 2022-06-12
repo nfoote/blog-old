@@ -63,11 +63,12 @@ const Index = ({ data, location }) => {
           <div style={{height: height, width: width}}> 
             <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
-        </Suspense>}
+
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />
         </div>
+        </Suspense>}
       </>
     )
 }
