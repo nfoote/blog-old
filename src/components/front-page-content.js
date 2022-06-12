@@ -94,7 +94,7 @@ const CardContainer = ({children}) => {
 }
 
 function FrontPageContent ({ blogPost }) {
-    return(
+    return (
         <ScrollControls damping={6} pages={4.2} position={0,0,-1000} >
             <Scroll>
                 <Caption>{"Nick \nFoote"}</Caption>
@@ -118,7 +118,8 @@ function FrontPageContent ({ blogPost }) {
                   </Card>
                 </CardContainer>
             </Scroll>
-        </ScrollControls>)
+        </ScrollControls>
+      )
 }
 export default FrontPageContent
 

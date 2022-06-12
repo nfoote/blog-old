@@ -26,7 +26,7 @@ const Blog = ({ data, location }) => {
   return (
 
 <Layout location={location} title={siteTitle}>
-<Seo title="All posts" />
+  <Seo title="All posts" />
       <Bio /> 
        <ol style={{ listStyle: `none` }}>
         {posts.map(post => {

@@ -11,7 +11,7 @@ module.exports = {
       summary: `who lives and works in Australia`,
     },
     description: `My personal blog.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `https://nickfoote.net`,
     social: {
       twitter: `nickfoote`,
       linkedin: `nick-foote-17008288`,

@@ -70,6 +70,6 @@ function Ball() {
 }
 
 
-export default function Noodles() {
+export default function Balls() {
   return Array.from({ length: 25 }, (_, i) => <Ball key={i} />)
 }

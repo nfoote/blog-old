@@ -6,7 +6,7 @@ import { Suspense } from 'react'
 import { Link, graphql } from "gatsby"
 import Burger from "../components/menu/Burger/Burger"
 import Menu from "../components/menu/Menu/Menu"
-
+import Seo from '../components/seo';
 
 const BlogPost = ({recentPost: post}) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -56,9 +56,10 @@ const Index = ({ data, location }) => {
 
     return(
       <>
+         <Seo title="Home" />
          <Suspense fallback={null}> {/*TODO: add a fallback */}
           <div style={{height: height, width: width}}> 
-            <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
+            <BallApp height={height} blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
         </Suspense>
         <div ref={node}>

@@ -21,7 +21,6 @@ const Menu = ({open}) => {
     }
   `)
 
-	const author = data.site.siteMetadata?.author
   const social = data.site.siteMetadata?.social
 
   return (
