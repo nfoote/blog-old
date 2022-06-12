@@ -47,7 +47,7 @@ const BlogPost = ({recentPost: post}) => {
 }
 
 const Index = ({ data, location }) => {
-    const { height, width } = useWindowDimensions();
+    //const { height, width } = useWindowDimensions();
     const recentPost = data.allMarkdownRemark.nodes[0];
     const [open, setOpen] = useState(false);
     const node = useRef(); 
@@ -58,8 +58,8 @@ const Index = ({ data, location }) => {
       <>
          <Seo title="Home" />
          <Suspense fallback={null}> {/*TODO: add a fallback */}
-          <div style={{height: height, width: width}}> 
-            <BallApp height={height} blogPost={<BlogPost recentPost={recentPost} />} />
+          <div style={{height: '100vh', width: '100vh'}}> 
+            <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>
         </Suspense>
         <div ref={node}>

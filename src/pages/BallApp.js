@@ -6,14 +6,14 @@ import Balls from './Balls'
 import React from 'react'
 import FrontPageContent  from '../components/front-page-content';
 
-export default function BallApp({children, height, blogPost}) {
+export default function BallApp({children, blogPost}) {
   return (
     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 22 }}>
         <Physics gravity={[0,0,0]}>
             <Balls />
         </Physics>
         <Bg />
-        <FrontPageContent height={height} blogPost={blogPost} />
+        <FrontPageContent blogPost={blogPost} />
     </Canvas>
   )
 }
