@@ -59,7 +59,7 @@ const Index = ({ data, location }) => {
       <>
          <Seo title="Home" />
          {isBrowser &&
-         <Suspense fallback={null}>
+         <Suspense fallback={<div>Loading</div>}>
           <div style={{height: height, width: width}}> 
             <BallApp blogPost={<BlogPost recentPost={recentPost} />} />
           </div>

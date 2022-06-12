@@ -96,9 +96,6 @@ const CardContainer = ({children}) => {
 function FrontPageContent ({ blogPost }) {
     return (
         <ScrollControls damping={6} pages={4.2} position={0,0,-1000} >
-            {/* <Scroll>
-                <Caption>{"Nick \nFoote"}</Caption>
-            </Scroll> */}
             <Scroll html style={{ width: '100%' }}>
                 <CardContainer>
                   <h1 style={{textAlign: 'center', fontSize: '6rem'}}>Nick Foote</h1>
