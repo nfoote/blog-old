@@ -8,12 +8,11 @@ import FrontPageContent  from './front-page-content';
 
 export default function BallApp({blogPost}) {
   return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 22 }}>
+    <Canvas camera={{ position: [0, 0, 10], fov: 22 }}>
         <Physics gravity={[0,0,0]}>
             <Balls />
         </Physics>
         <Bg />
-        <FrontPageContent blogPost={blogPost} />
     </Canvas>
   )
 }

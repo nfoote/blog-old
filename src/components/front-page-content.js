@@ -1,28 +1,7 @@
 import React from 'react'
-import { useThree } from '@react-three/fiber'
-import { ScrollControls, Scroll } from '@react-three/drei'
-import { Text } from '@react-three/drei'
 import diagram from '../images/svg/diagram-v2.svg'
 import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
-
-function Caption({ children }) {
-  const { width } = useThree((state) => state.viewport)
-  return (
-    <Text
-      position={[0, 1, 0]}
-      lineHeight={0.8}
-      font="/Montserrat.ttf"
-      scale={[0.7,0.7,0.7]}
-      fontSize={width / 6}
-      material-toneMapped={false}
-      anchorX="center"
-      anchorY="middle"
-      >
-      {children}
-    </Text>
-  )
-}
 
 const Form = () => {
   const form = { // TODO: Move this to style.css
@@ -95,29 +74,25 @@ const CardContainer = ({children}) => {
 
 function FrontPageContent ({ blogPost }) {
     return (
-        <ScrollControls damping={6} pages={4.2} position={0,0,-1000} >
-            <Scroll html style={{ width: '100%' }}>
-                <CardContainer>
-                  <h1 style={{textAlign: 'center', fontSize: '6rem'}}>Nick Foote</h1>
-                  <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
-                  <Card 
-                      styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
-                      content={frontPageContent.about} />
-                  <Card 
-                      styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
-                      content={frontPageContent.blog} 
-                  >
-                    {blogPost}
-                  </Card>
-                  <Card 
-                      styles={{ marginTop: '20vh', marginBottom: '10vh', padding: '35px'}} 
-                      content={frontPageContent.contact} >
-                    <Form />
-                  </Card>
-                </CardContainer>
-            </Scroll>
-        </ScrollControls>
-      )
+      <CardContainer>
+        <h1 style={{textAlign: 'center', fontSize: '6rem'}}>Nick Foote</h1>
+        <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
+        <Card 
+            styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
+            content={frontPageContent.about} />
+        <Card 
+            styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
+            content={frontPageContent.blog} 
+        >
+          {blogPost}
+        </Card>
+        <Card 
+            styles={{ marginTop: '20vh', marginBottom: '10vh', padding: '35px'}} 
+            content={frontPageContent.contact} >
+          <Form />
+        </Card>
+      </CardContainer>
+    )
 }
 export default FrontPageContent
 
