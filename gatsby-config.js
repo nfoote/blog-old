@@ -8,7 +8,7 @@ module.exports = {
     title: `nickfoote.net`,
     author: {
       name: `Nick Foote`,
-      summary: `who lives and works in Australia`,
+      summary: ``,
     },
     description: `My personal blog.`,
     siteUrl: `https://nickfoote.net`,

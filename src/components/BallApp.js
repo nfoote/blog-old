@@ -4,9 +4,8 @@ import { Physics } from "@react-three/cannon";
 import { LayerMaterial, Depth, Noise } from 'lamina'
 import Balls from './Balls'
 import React from 'react'
-import FrontPageContent  from './front-page-content';
 
-export default function BallApp({blogPost}) {
+export default function BallApp() {
   return (
     <Canvas camera={{ position: [0, 0, 10], fov: 22 }}>
         <Physics gravity={[0,0,0]}>

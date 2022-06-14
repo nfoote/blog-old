@@ -2,7 +2,6 @@ import React from "react";
 import ThemeToggle from "./theme-toggle";
 import { Link } from 'gatsby'
 
-
 const SiteHeader = props => {
 return(
     <>

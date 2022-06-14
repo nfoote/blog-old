@@ -63,11 +63,17 @@ const Card = ({styles, content, children}) => {
 
 const CardContainer = ({children}) => {
   const style = {
-    //marginTop: '30vh'
+    position: 'absolute', 
+    top: 0, 
+    left: 0, 
+    width: '100%', 
+    height: '100%' 
   }
   return(
-    <div className="global-wrapper" style={style}>
-      {children}
+    <div style={style}>
+      <div className="global-wrapper">
+        {children}
+      </div>
     </div>
   );
 }
@@ -92,6 +98,8 @@ function FrontPageContent ({ blogPost }) {
           <Form />
         </Card>
       </CardContainer>
+
+
     )
 }
 export default FrontPageContent

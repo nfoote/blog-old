@@ -26,29 +26,29 @@ const Menu = ({open}) => {
   return (
     <StyledMenu open={open}>
       <Link to="/blog/" itemProp="url">
-				<span role="img" aria-label="Blog">
-						<Emoji symbol="📝" style={{paddingRight: 1, paddingLeft: 1}} label="Blog"/>
-				</span>
-				Blog
+		<span role="img" aria-label="Blog">
+			<Emoji symbol="📝" style={{paddingRight: 1, paddingLeft: 1}} label="Blog"/>
+		</span>
+		Blog
       </Link>
-			<a href={`https://www.github.com/${social?.github || ``}`}>
-				<span style={{ display:'block'}}>
-					<img style={{height: '25px', width: '25px', marginRight: '12px'}}  src={github}></img>
-					GitHub
-				</span>
-			</a>
-			<a href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
-				<span style={{ display:'block'}}>
-					<img style={{height: '25px', width: '25px', marginRight: '12px'}}  src={linkedin}></img>
-					LinkedIn
-				</span>
-			</a>
-			<a href="resume.pdf">
-				<span role="img" aria-label="Resume">
-						<Emoji symbol="📃" style={{paddingRight: 1, paddingLeft: 1}} label="Resume"/>
-				</span>
-				Resume
-			</a>
+		<a href={`https://www.github.com/${social?.github || ``}`}>
+			<span style={{ display:'block'}}>
+			<img style={{height: '25px', width: '25px', marginRight: '12px'}} src={github} alt="github logo" />
+			GitHub
+			</span>
+		</a>
+		<a href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
+			<span style={{ display:'block'}}>
+			<img style={{height: '25px', width: '25px', marginRight: '12px'}} src={linkedin} alt="linkedin logo" />
+			LinkedIn
+			</span>
+		</a>
+		<a href="resume.pdf">
+			<span role="img" aria-label="Resume">
+				<Emoji symbol="📃" style={{paddingRight: 1, paddingLeft: 1}} label="Resume"/>
+			</span>
+			Resume
+		</a>
     </StyledMenu>
   )
 }

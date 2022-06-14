@@ -53,27 +53,24 @@ const Index = ({ data }) => {
     const [open, setOpen] = useState(false);
     const node = useRef(); 
     const isBrowser = typeof window !== "undefined"
-    console.log(height)
+
     useOnClickOutside(node, () => setOpen(false));
 
     return(
       <>
-         <Seo title="Home" />
+        <Seo title="Home" />
          {isBrowser &&
-         <Suspense fallback={<div>Loading</div>}>
-          <div style={{height: height, width: width, position: 'fixed' }}> 
-            <BallApp />
-          </div>
-
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
-              <FrontPageContent blogPost={<BlogPost recentPost={recentPost} />} />
-          </div>
-
-          <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} />
-          </div>
-        </Suspense>}
+          <Suspense fallback={<h1>Loading</h1>}>
+            <div style={{height: height, width: width, position: 'fixed', pointerEvents: 'none' }}> 
+              <BallApp />
+            </div>
+            <FrontPageContent blogPost={<BlogPost recentPost={recentPost} />} />
+            <div ref={node}>
+              <Burger open={open} setOpen={setOpen} />
+              <Menu open={open} />
+            </div>
+          </Suspense>
+        }
       </>
     )
 }
