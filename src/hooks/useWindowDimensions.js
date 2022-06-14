@@ -9,8 +9,8 @@ function getWindowDimensions() {
     };
   }
   return { 
-    width: '100',
-    height:'100'
+    width: 100,
+    height: 100
   }
 }
 
@@ -18,17 +18,19 @@ const isBrowser = () => typeof window !== "undefined"
 
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  const [hasWindowDimensions, setHasWindowDimensions] = useState(false);
 
   useEffect(() => {
-    if (isBrowser()) {
+    if (isBrowser() && !hasWindowDimensions) {
       function handleResize() {
         setWindowDimensions(getWindowDimensions());
       }
   
       window.addEventListener('resize', handleResize);
+      setHasWindowDimensions(true);
       return () => window.removeEventListener('resize', handleResize);
     }
-  }, []);
+  }, [hasWindowDimensions]);
 
   return windowDimensions;
 }
