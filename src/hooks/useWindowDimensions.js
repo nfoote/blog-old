@@ -18,19 +18,19 @@ const isBrowser = () => typeof window !== "undefined"
 
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-  const [hasWindowDimensions, setHasWindowDimensions] = useState(false);
+  //const [hasWindowDimensions, setHasWindowDimensions] = useState(false);
 
   useEffect(() => {
-    if (isBrowser() && !hasWindowDimensions) {
+    if (isBrowser()) {
       function handleResize() {
         setWindowDimensions(getWindowDimensions());
       }
   
       window.addEventListener('resize', handleResize);
-      setHasWindowDimensions(true);
+      //setHasWindowDimensions(true);
       return () => window.removeEventListener('resize', handleResize);
     }
-  }, [hasWindowDimensions]);
+  }, []);
 
   return windowDimensions;
 }
