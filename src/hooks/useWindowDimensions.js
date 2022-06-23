@@ -44,9 +44,10 @@ export default function useWindowDimensions() {
         //   }, delay);
         // }  
         // console.log("resize")
-        // const {height:currentHeight, width:currentWidth} = getWindowDimensions();
-        // if(windowDimensions?.height > currentHeight)
-        //   console.log("higher")
+        const { height:currentHeight, width:currentWidth } = getWindowDimensions();
+
+        if(windowDimensions?.height > currentHeight)
+          console.log("higher")
 
         handleResize();
 
@@ -54,7 +55,7 @@ export default function useWindowDimensions() {
 
       return () => window.removeEventListener('resize', handleResize);
     }
-  }, [windowDimensions]);
+  }, []);
 
   return windowDimensions;
 }

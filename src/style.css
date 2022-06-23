@@ -263,6 +263,22 @@ a:focus {
 
 /* Custom classes */
 
+.ball-wrapper {
+  /* Full height */
+  /* height: 100%;
+  width: 100%; */
+  /* min-height: var(--x-height-multiplier);
+  min-width: var(--x-height-multiplier); */
+  /* Create the parallax scrolling effect */
+  /* background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  height: calc(100vh);
+  width: 100%;
+  position: fixed;
+}
+
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
