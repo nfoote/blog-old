@@ -7,7 +7,7 @@ import React from 'react'
 
 export default function BallApp() {
   return (
-    <Canvas camera={{ position: [0, 0, 10], fov: 22 }}>
+    <Canvas camera={{ position: [0, 0, 10], fov: 25 }}>
         <Physics gravity={[0,0,0]}>
             <Balls />
         </Physics>

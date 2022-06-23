@@ -93,7 +93,7 @@ function FrontPageContent ({ blogPost }) {
           {blogPost}
         </Card>
         <Card 
-            styles={{ marginTop: '20vh', marginBottom: '10vh', padding: '35px'}} 
+            styles={{ marginTop: '20vh', marginBottom: '20vh', padding: '35px'}} 
             content={frontPageContent.contact} >
           <Form />
         </Card>

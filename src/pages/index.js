@@ -61,7 +61,7 @@ const Index = ({ data }) => {
         <Seo title="Home" />
          {isBrowser &&
           <Suspense fallback={<h1>Loading</h1>}>
-            <div style={{ height: height, width: width, position: 'fixed', pointerEvents: 'none' }}> 
+            <div style={{ height: height, width: width, position: 'fixed', bottom: 0 }}> 
               <BallApp />
             </div>
             <FrontPageContent blogPost={<BlogPost recentPost={recentPost} />} />

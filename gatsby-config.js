@@ -3,6 +3,9 @@ require("dotenv").config({
 });
 
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [`gatsby-plugin-styled-components`],
   siteMetadata: {
     title: `nickfoote.net`,

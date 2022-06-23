@@ -33,16 +33,23 @@ export default function useWindowDimensions() {
       // window.resize event listener
       window.addEventListener('resize', function() {
         // only run if we're not throttled
-        if (!throttled) {
-          // actual callback action
-          handleResize();
-          // we're throttled!
-          throttled = true;
-          // set a timeout to un-throttle
-          setTimeout(function() {
-            throttled = false;
-          }, delay);
-        }  
+        // if (!throttled) {
+        //   // actual callback action
+        //   handleResize();
+        //   // we're throttled!
+        //   throttled = true;
+        //   // set a timeout to un-throttle
+        //   setTimeout(function() {
+        //     throttled = false;
+        //   }, delay);
+        // }  
+        // console.log("resize")
+        // const {height:currentHeight, width:currentWidth} = getWindowDimensions();
+        // if(windowDimensions?.height > currentHeight)
+        //   console.log("higher")
+
+        handleResize();
+
       });
 
       return () => window.removeEventListener('resize', handleResize);
