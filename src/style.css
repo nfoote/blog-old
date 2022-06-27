@@ -103,7 +103,6 @@ body.dark {
   -webkit-font-smoothing: antialiased;
   --color-text-light: #96a0af;
   --color-heading: #94aee1;
-  
 }
 
 footer {
@@ -262,18 +261,23 @@ a:focus {
 }
 
 /* Custom classes */
+.card {
+  background: #232a2fbd;
+  padding: 16px;
+  border-radius: 25px;
+  /* background-color: var(--black); */
+
+}
+
+.card-container {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+}
 
 .ball-wrapper {
-  /* Full height */
-  /* height: 100%;
-  width: 100%; */
-  /* min-height: var(--x-height-multiplier);
-  min-width: var(--x-height-multiplier); */
-  /* Create the parallax scrolling effect */
-  /* background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
   height: calc(100vh);
   width: 100%;
   position: fixed;

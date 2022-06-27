@@ -33,8 +33,8 @@ const Form = () => {
               </textarea>
           </label>
           <button className="button-30" style={{marginTop: '2rem'}}>
-            <img style={{height: '50px', width: '50px', margin: '10px'}} src={sendImage} />
             Send
+            <img style={{height: '30px', width: '30px', margin: '5px'}} src={sendImage} />     
           </button>            
       </div>
     </form>
@@ -43,15 +43,9 @@ const Form = () => {
 
 const Card = ({styles, content, children}) => {
   const { heading, paragraph1, paragraph2 } = content;
-  const defaultStyles = {
-      background: '#232a2fbd',
-      padding: '16px',
-      borderRadius: '25px',
-      ...styles
-  }
     return (
       <>
-        <div style={defaultStyles}>
+        <div className="card" style={styles} >
           {heading && <h1>{heading}</h1>}
           {paragraph1 && <p>{paragraph1}</p>}
           {paragraph2 && <p>{paragraph2}</p>}
@@ -62,15 +56,8 @@ const Card = ({styles, content, children}) => {
 }
 
 const CardContainer = ({children}) => {
-  const style = {
-    position: 'absolute', 
-    top: 0, 
-    left: 0, 
-    width: '100%', 
-    height: '100%' 
-  }
   return(
-    <div style={style}>
+    <div className="card-container">
       <div className="global-wrapper">
         {children}
       </div>
@@ -98,8 +85,6 @@ function FrontPageContent ({ blogPost }) {
           <Form />
         </Card>
       </CardContainer>
-
-
     )
 }
 export default FrontPageContent
