@@ -1,5 +1,5 @@
 import React from 'react'
-import diagram from '../images/svg/diagram-v2.svg'
+// import diagram from '../images/svg/diagram-v2.svg'
 import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 
@@ -69,7 +69,8 @@ function FrontPageContent ({ blogPost }) {
     return (
       <CardContainer>
         <h1 style={{textAlign: 'center', fontSize: '6rem'}}>Nick Foote</h1>
-        <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
+        {/* <img src={diagram} alt="Man standing next to a puppy with coffee in hand." /> */}
+        {/* TODO: fix slow image load and move css to styles.css to avoid layout shift */}
         <Card 
             styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
             content={frontPageContent.about} />

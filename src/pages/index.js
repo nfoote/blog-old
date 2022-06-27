@@ -7,8 +7,8 @@ import { Link, graphql } from "gatsby"
 import Burger from "../components/menu/Burger/Burger"
 import Menu from "../components/menu/Menu/Menu"
 import Seo from '../components/seo';
-import FrontPageContent from '../components/front-page-content';
-
+// import FrontPageContent from '../components/front-page-content';
+import loadable from '@loadable/component'
 const BlogPost = ({recentPost: post}) => {
   const title = post.frontmatter.title || post.fields.slug
   const style = {
@@ -47,20 +47,57 @@ const BlogPost = ({recentPost: post}) => {
   )
 }
 
+const RenderContent = ({data}) => {
+  const recentPost = data.allMarkdownRemark.nodes[0];
+  const [open, setOpen] = useState(false);
+  const node = useRef(); 
+  // const isBrowser = typeof window !== "undefined"
+  useOnClickOutside(node, () => setOpen(false));
+
+  return (
+    <>
+    <div className="ball-wrapper">
+      <BallApp />
+    </div>
+    <FrontPageContent blogPost={<BlogPost recentPost={recentPost} />} />
+    <div ref={node}>
+      <Burger open={open} setOpen={setOpen} />
+      <Menu open={open} />
+    </div>
+    </>
+  )
+}
+
+const FrontPageContent = loadable(() => import('../components/front-page-content'), {
+  fallback: <div>Loading...</div>,
+})
+function MyComponent() {
+  return (
+    <div>
+      <FrontPageContent blogPost={null} />
+    </div>
+  )
+}
+
 const Index = ({ data }) => {
     // const { height, width } = useWindowDimensions();
-    const recentPost = data.allMarkdownRemark.nodes[0];
-    const [open, setOpen] = useState(false);
-    const node = useRef(); 
+    // const recentPost = data.allMarkdownRemark.nodes[0];
+    // const [open, setOpen] = useState(false);
+    // const node = useRef(); 
     const isBrowser = typeof window !== "undefined"
 
-    useOnClickOutside(node, () => setOpen(false));
+    // useOnClickOutside(node, () => setOpen(false));
 
     return(
       <>
-        <Seo title="Home" />
+
+        <MyComponent />
+
+        {/* <Seo title="Home" />
          {isBrowser &&
+          <RenderContent data={data} />
           <Suspense fallback={<h1>Loading</h1>}>
+            
             <div className="ball-wrapper">
               <BallApp />
             </div>
@@ -69,8 +106,11 @@ const Index = ({ data }) => {
               <Burger open={open} setOpen={setOpen} />
               <Menu open={open} />
             </div>
+
           </Suspense>
-        }
+
+
+        } */}
       </>
     )
 }
