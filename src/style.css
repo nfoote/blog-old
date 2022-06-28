@@ -145,6 +145,7 @@ h1 {
   color: var(--color-heading-black);
 }
 
+
 h2 {
   font-size: var(--fontSize-5);
 }
@@ -261,12 +262,17 @@ a:focus {
 }
 
 /* Custom classes */
+
+.hero-content {
+  text-align: center;
+  font-size: 6rem;
+}
+
 .card {
   background: #232a2fbd;
   padding: 16px;
   border-radius: 25px;
   /* background-color: var(--black); */
-
 }
 
 .card-container {
@@ -419,7 +425,6 @@ a:focus {
   float: left; /* 1 */
   min-width: 100%; /* 2 */
 }
-
 
 .burger {
   position: absolute;
