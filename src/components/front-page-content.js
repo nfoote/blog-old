@@ -116,9 +116,7 @@ function FrontPageContent ({ blogPost }) {
 
     return (
       <>
-        <div className="ball-wrapper">
-          <BallApp />
-        </div>
+        <BallApp />
         <CardContainer>
           <h1 className="hero-content">Nick Foote</h1>            
         <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
