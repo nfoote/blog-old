@@ -6,7 +6,6 @@ import diagram from '../images/svg/diagram-v3.svg'
 import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 const BlogPost = ({ post, theme }) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -99,21 +98,17 @@ function FrontPageContent ({ blogPost }) {
       <>
         <BallApp />
         <CardContainer>
-          <h1 className="hero-content">Nick Foote</h1>            
+          <h1 className="hero-content">Nick Foote</h1>  
           <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
-          <ThemeToggler>
-            {({ theme }) => (
-              frontPageContent.data.map((content) => {
+              {frontPageContent.data.map((content) => {
                 return (
                   <Fragment key={content.type}>
-                    {content.type === 'about' && <Card theme={theme} content={content} />}
-                    {content.type === 'blog' && <Card theme={theme} content={content}><BlogPost theme={theme} post={blogPost} /></Card>}
-                    {content.type === 'contact' && <Card theme={theme} content={content}><Form /></Card>}
+                    {content.type === 'about' && <Card content={content} />}
+                    {content.type === 'blog' && <Card content={content}><BlogPost post={blogPost} /></Card>}
+                    {content.type === 'contact' && <Card content={content}><Form /></Card>}
                   </Fragment>
                 );
-              })
-            )}
-          </ThemeToggler>
+              })}
         </CardContainer>
       </>
     )
