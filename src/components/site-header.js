@@ -12,7 +12,7 @@ const SiteHeader = props => {
   useOnClickOutside(node, () => setOpen(false));
 
   return (
-    <div className='nav-container'>
+    <>
       <ThemeToggler>
         {({ theme, toggleTheme }) => (
           <h1 className={props.className}>
@@ -27,7 +27,7 @@ const SiteHeader = props => {
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />
       </div>
-    </div>
+    </>
   )
 }
 
