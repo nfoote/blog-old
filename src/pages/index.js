@@ -20,16 +20,18 @@ const Index = ({ data }) => {
   const node = useRef(); 
 
   useOnClickOutside(node, () => setOpen(false));
-    const recentPost = data.allMarkdownRemark.nodes[0];
-    return(
-      <>
-      <FrontPage blogPost={recentPost} />
-      <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} />
-      </div>
-      </>
-    )
+
+  const recentPost = data.allMarkdownRemark?.nodes[0];
+
+  return(
+    <>
+    <FrontPage blogPost={recentPost} />
+    <div ref={node}>
+      <Burger open={open} setOpen={setOpen} />
+      <Menu open={open} />
+    </div>
+    </>
+  )
 }
 
 export default Index

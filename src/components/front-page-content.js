@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { Fragment } from 'react';
 import BallApp from "../components/BallApp"
 
 import { Link, graphql } from "gatsby"
@@ -6,8 +6,9 @@ import diagram from '../images/svg/diagram-v3.svg'
 import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
+import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
-const BlogPost = ({post}) => {
+const BlogPost = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug
   const style = {
     border: '1px solid #ffffff5e',
@@ -93,7 +94,6 @@ const CardContainer = ({children}) => {
   );
 }
 
-
 function FrontPageContent ({ blogPost }) {
     return (
       <>
@@ -101,32 +101,19 @@ function FrontPageContent ({ blogPost }) {
         <CardContainer>
           <h1 className="hero-content">Nick Foote</h1>            
           <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
-          {frontPageContent.data.map((content) => {
-            return (
-              <>
-                {content.type === 'about' && <Card content={content} />}
-                {content.type === 'blog' && <Card content={content}><BlogPost post={blogPost}/></Card>}
-                {content.type === 'contact' && <Card content={content}><Form /></Card>}
-              </>
-            );
-          })}
-
-    
-
-          {/* <Card 
-              styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
-              content={frontPageContent.about} />
-          <Card 
-              styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
-              content={frontPageContent.blog} 
-          >
-            <BlogPost recentPost={blogPost} />
-          </Card>
-          <Card 
-              styles={{ marginTop: '20vh', marginBottom: '20vh', padding: '35px'}} 
-              content={frontPageContent.contact} >
-            <Form />
-          </Card> */}
+          <ThemeToggler>
+            {({ theme }) => (
+              frontPageContent.data.map((content) => {
+                return (
+                  <Fragment key={content.type}>
+                    {content.type === 'about' && <Card theme={theme} content={content} />}
+                    {content.type === 'blog' && <Card theme={theme} content={content}><BlogPost post={blogPost} /></Card>}
+                    {content.type === 'contact' && <Card theme={theme} content={content}><Form /></Card>}
+                  </Fragment>
+                );
+              })
+            )}
+          </ThemeToggler>
         </CardContainer>
       </>
     )

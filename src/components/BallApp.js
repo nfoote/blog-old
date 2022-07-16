@@ -3,35 +3,21 @@ import { Physics } from "@react-three/cannon";
 import { LayerMaterial, Depth, Noise } from 'lamina'
 import Balls from './Balls'
 import React from 'react'
-import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
-export default function BallApp() {
+export default function BallApp({theme}) {
   return (
     <div className="ball-wrapper">
       <Canvas camera={{ position: [0, 0, 10], fov: 25 }}>
           <Physics gravity={[0,0,0]}>
               <Balls />
           </Physics>
-          <ThemeToggler>
-            {({ theme }) => (
-              <Bg theme={theme} />
-            )}
-          </ThemeToggler>
+          <Bg />
       </Canvas>
     </div>
   )
 }
 
-function Bg(theme) {
-  let colour;
-  if (theme.theme === "dark") {
-    colour = "red"
-  }
-
-  if(theme.theme === "light"){
-    colour = "blue"
-  }
-  
+function Bg() {
   return (
     <mesh scale={100}>
       <boxGeometry args={[1, 1, 1]} />
