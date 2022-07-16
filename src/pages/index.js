@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { graphql } from "gatsby"
 import loadable from '@loadable/component'
 import pMinDelay from 'p-min-delay';
@@ -7,17 +7,10 @@ import { Loader } from '../components/loader';
 const FrontPageContent = loadable(() => pMinDelay(import('../components/front-page-content'), 1500), {
   fallback: <Loader />,
 })
-const FrontPage = ({ blogPost }) => {
-  return <FrontPageContent blogPost={blogPost} />
-}
 
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
   const recentPost = data.allMarkdownRemark?.nodes[0];
-  return(
-    <>
-    <FrontPage blogPost={recentPost} />
-    </>
-  )
+  return <FrontPageContent blogPost={recentPost} location={location} />
 }
 
 export default Index

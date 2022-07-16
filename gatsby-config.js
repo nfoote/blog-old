@@ -3,10 +3,6 @@ require("dotenv").config({
 });
 
 module.exports = {
-  
-  flags: {
-    DEV_SSR: true
-  },
   plugins: [
   "gatsby-plugin-styled-components",
   "gatsby-plugin-loadable-components-ssr",

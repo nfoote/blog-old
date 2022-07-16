@@ -93,14 +93,16 @@ body {
   /* Theme Switching */
   transition: var(--transition);
   background-color: var(--white);
-  --bg: rgb(255, 255, 255);
+  --card: rgba(255, 255, 255, 0.869);
   --recentBlog: #e2f5ff;
+  --recentBlogOutline: #354046;
   --loader: #e2f5ff;
 }
 
 body.dark {
-  --bg: #282c35;
+  --card: #282c35d2;
   --recentBlog: rgb(35 42 47 / 95%);
+  --recentBlogOutline: #354046;
   --loader: rgb(35 42 47 / 95%);
 
   /* Dark Theme Colour Palette */

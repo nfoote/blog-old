@@ -7,9 +7,7 @@ import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
 
-import Burger from "../components/menu/Burger/Burger"
-import Menu from "../components/menu/Menu/Menu"
-import { useOnClickOutside } from '../hooks/useOnClickOutside';
+import Layout from './layout';
 
 const BlogPost = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -87,42 +85,33 @@ const Form = () => {
   )
 }
 
-const CardContainer = ({ children }) => {
+const CardContainer = ({ children, location }) => {
   return(
     <div className="card-container">
-      <div className="global-wrapper">
-        {children}
-      </div>
+      <Layout location={location} title="home">
+        {children && children}
+      </Layout>
     </div>
   );
 }
 
-function FrontPageContent ({ blogPost }) {
-  const [open, setOpen] = useState(false);
-  const node = useRef(); 
-
-  useOnClickOutside(node, () => setOpen(false));
-
-    return (
+const FrontPageContent = ({ location, blogPost }) => {  
+  return (
       <>
         <BallApp />
-        <CardContainer>
-          <h1 className="hero-content">Nick Foote</h1>  
-          <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
-              {frontPageContent.data.map((content) => {
-                return (
-                  <Fragment key={content.type}>
-                    {content.type === 'about' && <Card content={content} />}
-                    {content.type === 'blog' && <Card content={content}><BlogPost post={blogPost} /></Card>}
-                    {content.type === 'contact' && <Card content={content}><Form /></Card>}
-                  </Fragment>
-                );
-              })}
-        </CardContainer>
-        <div ref={node}>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} />
-        </div>
+        <CardContainer location={location}>
+        <h1 className="hero-content">Nick Foote</h1>  
+        <img className="diagram" src={diagram} alt="Man standing next to a puppy with coffee in hand." />
+            {frontPageContent.data.map((content) => {
+              return (
+                <Fragment key={content.type}>
+                  {content.type === 'about' && <Card content={content} />}
+                  {content.type === 'blog' && <Card content={content}><BlogPost post={blogPost} /></Card>}
+                  {content.type === 'contact' && <Card content={content}><Form /></Card>}
+                </Fragment>
+              );
+            })}
+      </CardContainer>
       </>
     )
 }
