@@ -5,8 +5,9 @@ import { Link, graphql } from "gatsby"
 import diagram from '../images/svg/diagram-v3.svg'
 import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
+import Card from './cards/Card';
 
-const BlogPost = ({recentPost: post}) => {
+const BlogPost = ({post}) => {
   const title = post.frontmatter.title || post.fields.slug
   const style = {
     border: '1px solid #ffffff5e',
@@ -82,20 +83,6 @@ const Form = () => {
   )
 }
 
-const Card = ({styles, content, children}) => {
-  const { heading, paragraph1, paragraph2 } = content;
-    return (
-      <>
-        <div className="card" style={styles} >
-          {heading && <h1>{heading}</h1>}
-          {paragraph1 && <p>{paragraph1}</p>}
-          {paragraph2 && <p>{paragraph2}</p>}
-          {children && children}
-        </div>
-      </>
-    );
-}
-
 const CardContainer = ({children}) => {
   return(
     <div className="card-container">
@@ -106,6 +93,7 @@ const CardContainer = ({children}) => {
   );
 }
 
+
 function FrontPageContent ({ blogPost }) {
     return (
       <>
@@ -113,7 +101,19 @@ function FrontPageContent ({ blogPost }) {
         <CardContainer>
           <h1 className="hero-content">Nick Foote</h1>            
           <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
-          <Card 
+          {frontPageContent.data.map((content) => {
+            return (
+              <>
+                {content.type === 'about' && <Card content={content} />}
+                {content.type === 'blog' && <Card content={content}><BlogPost post={blogPost}/></Card>}
+                {content.type === 'contact' && <Card content={content}><Form /></Card>}
+              </>
+            );
+          })}
+
+    
+
+          {/* <Card 
               styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
               content={frontPageContent.about} />
           <Card 
@@ -126,7 +126,7 @@ function FrontPageContent ({ blogPost }) {
               styles={{ marginTop: '20vh', marginBottom: '20vh', padding: '35px'}} 
               content={frontPageContent.contact} >
             <Form />
-          </Card>
+          </Card> */}
         </CardContainer>
       </>
     )

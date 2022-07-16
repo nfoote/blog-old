@@ -1,14 +1,20 @@
 {
-    "about": {
+    "data":[
+    {
         "heading": "About 👋",
         "paragraph1": "Hi, I'm Nick, a software developer living in Australia. I have created applications for manufacturing, health and now work in finance.",
-        "paragraph2": "I am passionate about all areas of the stack but particularly enjoy solving problems relating to scalable frontend architecture."
+        "paragraph2": "I am passionate about all areas of the stack but particularly enjoy solving problems relating to scalable frontend architecture.",
+        "type": "about"
+
     },
-    "blog": {
+    {
         "heading": "Blog 🚀",
-        "paragraph1": "I write about technical and nontechnical things sometimes. Check them out if you care to find out what I've been working on in my spare time."
+        "paragraph1": "I write about technical and nontechnical things sometimes. Check them out if you care to find out what I've been working on in my spare time.",
+        "type": "blog"
     },
-    "contact": {
-        "heading": "Contact ✍️"
+    {
+        "heading": "Contact ✍️",
+        "type": "contact"
     }
+]
 }
