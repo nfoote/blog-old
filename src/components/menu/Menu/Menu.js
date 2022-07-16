@@ -7,7 +7,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import linkedin from '../../../images/svg/linkedin.svg'
 import github from '../../../images/svg/github.svg'
 
-const Menu = ({open}) => {
+const Menu = ({ open }) => {
   const data = useStaticQuery(graphql`
     query MenuQuery {
       site {

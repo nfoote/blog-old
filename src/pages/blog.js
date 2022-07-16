@@ -1,22 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import Burger from "../components/menu/Burger/Burger"
-import Menu from "../components/menu/Menu/Menu"
-import { useOnClickOutside } from '../hooks/useOnClickOutside';
-
 const Blog = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-
-  const [open, setOpen] = useState(false);
-  const node = useRef(); 
-
-  useOnClickOutside(node, () => setOpen(false));
 
   if (posts.length === 0) {
     return (
@@ -70,11 +61,6 @@ const Blog = ({ data, location }) => {
         })}
       </ol>
     </Layout>
-
-          <div ref={node}>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} />
-        </div>
       </>  
   )
 }
