@@ -26,7 +26,7 @@ const Index = ({ data }) => {
     <FrontPage blogPost={recentPost} />
     <div ref={node}>
       <Burger open={open} setOpen={setOpen} />
-      <Menu open={open} />
+      <Menu open={open} setOpen={setOpen} />
     </div>
     </>
   )

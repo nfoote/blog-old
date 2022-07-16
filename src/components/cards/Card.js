@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyledCard } from './Card.styled';
 
-const Card = ({ content, children, theme }) => {
+const Card = ({ content, children }) => {
     const { heading, paragraph1, paragraph2 } = content || {};
 
     return (
-        <StyledCard theme={theme}>
+        <StyledCard>
             {heading && <h1>{heading}</h1>}
             {paragraph1 && <p>{paragraph1}</p>}
             {paragraph2 && <p>{paragraph2}</p>}

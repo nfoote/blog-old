@@ -66,6 +66,8 @@
   --white: rgb(255, 255, 255);
   --black: #282c35;
   --transition: 0.3s ease-out;
+
+  --maxMobileWidth: 42rem;
 }
 
 /* HTML elements */
@@ -91,9 +93,14 @@ body {
   /* Theme Switching */
   transition: var(--transition);
   background-color: var(--white);
+  --bg: rgb(255, 255, 255);
+
 }
 
 body.dark {
+  --bg: #282c35;
+
+
   /* Dark Theme Colour Palette */
   transition: var(--transition);
   background-color: var(--black);
