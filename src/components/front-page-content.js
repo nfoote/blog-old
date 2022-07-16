@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import BallApp from "../components/BallApp"
 
 import { Link, graphql } from "gatsby"
@@ -7,13 +7,17 @@ import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
 
-const BlogPost = ({ post, theme }) => {
+import Burger from "../components/menu/Burger/Burger"
+import Menu from "../components/menu/Menu/Menu"
+import { useOnClickOutside } from '../hooks/useOnClickOutside';
+
+const BlogPost = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug
   const style = {
     border: '1px solid #ffffff5e',
     padding: '10px',
     borderRadius: '10px',
-    backgroundColor: theme === 'dark' ? 'rgb(35 42 47 / 95%)' : '#e2f5ff'
+    backgroundColor: 'var(--recentblog)'
   }
   return(
     <>
@@ -94,6 +98,11 @@ const CardContainer = ({ children }) => {
 }
 
 function FrontPageContent ({ blogPost }) {
+  const [open, setOpen] = useState(false);
+  const node = useRef(); 
+
+  useOnClickOutside(node, () => setOpen(false));
+
     return (
       <>
         <BallApp />
@@ -110,6 +119,10 @@ function FrontPageContent ({ blogPost }) {
                 );
               })}
         </CardContainer>
+        <div ref={node}>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} />
+        </div>
       </>
     )
 }
