@@ -8,13 +8,13 @@ import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
-const BlogPost = ({ post }) => {
+const BlogPost = ({ post, theme }) => {
   const title = post.frontmatter.title || post.fields.slug
   const style = {
     border: '1px solid #ffffff5e',
     padding: '10px',
     borderRadius: '10px',
-    backgroundColor: 'rgb(35 42 47 / 95%)'
+    backgroundColor: theme === 'dark' ? 'rgb(35 42 47 / 95%)' : '#e2f5ff'
   }
   return(
     <>
@@ -84,7 +84,7 @@ const Form = () => {
   )
 }
 
-const CardContainer = ({children}) => {
+const CardContainer = ({ children }) => {
   return(
     <div className="card-container">
       <div className="global-wrapper">
@@ -107,7 +107,7 @@ function FrontPageContent ({ blogPost }) {
                 return (
                   <Fragment key={content.type}>
                     {content.type === 'about' && <Card theme={theme} content={content} />}
-                    {content.type === 'blog' && <Card theme={theme} content={content}><BlogPost post={blogPost} /></Card>}
+                    {content.type === 'blog' && <Card theme={theme} content={content}><BlogPost theme={theme} post={blogPost} /></Card>}
                     {content.type === 'contact' && <Card theme={theme} content={content}><Form /></Card>}
                   </Fragment>
                 );

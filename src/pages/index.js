@@ -7,7 +7,6 @@ import Burger from "../components/menu/Burger/Burger"
 import Menu from "../components/menu/Menu/Menu"
 import { useOnClickOutside } from '../hooks/useOnClickOutside';
 
-
 const FrontPageContent = loadable(() => pMinDelay(import('../components/front-page-content'), 1500), {
   fallback: <Loader />,
 })

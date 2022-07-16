@@ -3,7 +3,7 @@ import { StyledCard } from './Card.styled';
 
 const Card = ({ content, children, theme }) => {
     const { heading, paragraph1, paragraph2 } = content || {};
-    console.log(theme)
+
     return (
         <StyledCard theme={theme}>
             {heading && <h1>{heading}</h1>}
