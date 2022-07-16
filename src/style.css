@@ -263,13 +263,52 @@ a:focus {
 
 /* Custom classes */
 
+.lds-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(255, 255, 255) transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .hero-content {
+  color: white;
   text-align: center;
   font-size: 6rem;
 }
 
 .card {
-  background: #232a2fbd;
+  background: #f1fafdd9;
   padding: 16px;
   border-radius: 25px;
   /* background-color: var(--black); */
@@ -287,11 +326,11 @@ a:focus {
   height: calc(100vh);
   width: 100%;
   position: fixed;
-  -webkit-animation: fadein 6s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 6s; /* Firefox < 16 */
-   -ms-animation: fadein 6s; /* Internet Explorer */
-    -o-animation: fadein 6s; /* Opera < 12.1 */
-       animation: fadein 6s;
+  -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 3s; /* Firefox < 16 */
+   -ms-animation: fadein 3s; /* Internet Explorer */
+    -o-animation: fadein 3s; /* Opera < 12.1 */
+       animation: fadein 3s;
 }
 
 @keyframes fadein {

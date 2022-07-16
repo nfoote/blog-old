@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
 import BallApp from "../components/BallApp"
-import Burger from "../components/menu/Burger/Burger"
-import Menu from "../components/menu/Menu/Menu"
+
 import { Link, graphql } from "gatsby"
-import { useOnClickOutside } from '../hooks/useOnClickOutside';
 import diagram from '../images/svg/diagram-v3.svg'
 import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
@@ -109,18 +107,12 @@ const CardContainer = ({children}) => {
 }
 
 function FrontPageContent ({ blogPost }) {
-    const [open, setOpen] = useState(false);
-    const node = useRef(); 
-
-    useOnClickOutside(node, () => setOpen(false));
-
     return (
       <>
         <BallApp />
         <CardContainer>
           <h1 className="hero-content">Nick Foote</h1>            
-        <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
-          {/* TODO: fix slow image load and move css to styles.css to avoid layout shift */}
+          <img src={diagram} alt="Man standing next to a puppy with coffee in hand." />
           <Card 
               styles={{ marginTop: '20vh', marginBottom: '10vh'}} 
               content={frontPageContent.about} />
@@ -136,10 +128,6 @@ function FrontPageContent ({ blogPost }) {
             <Form />
           </Card>
         </CardContainer>
-        <div ref={node}>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} />
-        </div>
       </>
     )
 }
