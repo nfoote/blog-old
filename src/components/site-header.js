@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Fragment } from 'react';
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 import Burger from "../components/menu/Burger/Burger"
@@ -12,7 +12,7 @@ const SiteHeader = props => {
   useOnClickOutside(node, () => setOpen(false));
 
   return (
-    <>
+    <div className='nav-container'>
       <ThemeToggler>
         {({ theme, toggleTheme }) => (
           <h1 className={props.className}>
@@ -27,7 +27,7 @@ const SiteHeader = props => {
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />
       </div>
-    </>
+    </div>
   )
 }
 

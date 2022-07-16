@@ -8,6 +8,7 @@ import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
 
 import Layout from './layout';
+import Seo from './seo';
 
 const BlogPost = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -89,6 +90,7 @@ const CardContainer = ({ children, location }) => {
   return(
     <div className="card-container">
       <Layout location={location} title="home">
+      <Seo title="Home" />
         {children && children}
       </Layout>
     </div>
