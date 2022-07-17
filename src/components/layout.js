@@ -11,12 +11,15 @@ const Layout = ({ location, title, children }) => {
   //   : <SiteHeader title={title} className="header-link-home" />
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">
+<>
+    <header>
       <SiteHeader title={title} />
-      </header>
+    </header>
+
+    <div className="global-wrapper" data-is-root-path={isRootPath}>
       <main>{children}</main>
     </div>
+  </>
   )
 }
 
