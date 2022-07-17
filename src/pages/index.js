@@ -13,31 +13,31 @@ import FrontPageContent from '../components/front-page-content';
 const Index = ({ data, location }) => {
   const recentPost = data.allMarkdownRemark?.nodes[0];
   return (
-  // <Layout location={location}>
+  <Layout location={location}>
     <FrontPageContent blogPost={recentPost} location={location} />
-  // </Layout>
+  </Layout>
   )
 }
 
 export default Index
 
-export async function getServerData() {
-  try {
-    const res = await fetch(`https://dog.ceo/api/breeds/image/random`)
-    if (!res.ok) {
-      throw new Error(`Response failed`)
-    }
-    return {
-      props: {},
-    }
-  } catch (error) {
-    return {
-      status: 500,
-      headers: {},
-      props: {}
-    }
-  }
-}
+// export async function getServerData() {
+//   try {
+//     const res = await fetch(`https://dog.ceo/api/breeds/image/random`)
+//     if (!res.ok) {
+//       throw new Error(`Response failed`)
+//     }
+//     return {
+//       props: {},
+//     }
+//   } catch (error) {
+//     return {
+//       status: 500,
+//       headers: {},
+//       props: {}
+//     }
+//   }
+// }
 
 export const pageQuery = graphql`
 query {

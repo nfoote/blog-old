@@ -11,8 +11,7 @@ const Blog = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
 
   return (
-<>
-{/* <Layout location={location} title={siteTitle}> */}
+<Layout location={location} title={siteTitle}>
   <Seo title="All posts" />
       <Bio /> 
        <ol style={{ listStyle: `none` }}>
@@ -47,31 +46,18 @@ const Blog = ({ data, location }) => {
           )
         })}
       </ol>
-    {/* </Layout> */}
-      </>  
+    </Layout>
   )
 }
 
 export default Blog
 
 
-export async function getServerData() {
-  try {
-    const res = await fetch(`https://dog.ceo/api/breeds/image/random`)
-    if (!res.ok) {
-      throw new Error(`Response failed`)
-    }
-    return {
-      props: {},
-    }
-  } catch (error) {
-    return {
-      status: 500,
-      headers: {},
-      props: {}
-    }
-  }
-}
+// export async function getServerData() {
+//   return {
+//     props: {},
+//   }
+// }
 
 
 export const pageQuery = graphql`
