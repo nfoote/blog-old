@@ -95,7 +95,7 @@ const CardContainer = ({ children, location }) => {
 const FrontPageContent = ({ location, blogPost }) => {  
   return (
       <>
-        <BallApp />
+        {/* <BallApp /> */}
         <CardContainer location={location}>
           <h1 className="hero-content">Nick Foote</h1>  
           <img className="diagram" src={diagram} alt="Man standing next to a puppy with coffee in hand." />
