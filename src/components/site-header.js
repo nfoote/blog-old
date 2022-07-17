@@ -5,6 +5,7 @@ import Burger from "../components/menu/Burger/Burger"
 import Menu from "../components/menu/Menu/Menu"
 import { useOnClickOutside } from '../hooks/useOnClickOutside';
 import ToggleSwitch from './toggle-switch';
+import ThemeToggle from './theme-toggle';
 
 const SiteHeader = props => {
   const [open, setOpen] = useState(false);
@@ -13,16 +14,7 @@ const SiteHeader = props => {
 
   return (
     <>
-      <ThemeToggler>
-        {({ theme, toggleTheme }) => (
-          <h1 className={props.className}>
-          <ToggleSwitch
-              onThemeSwitch={e => toggleTheme(e ? 'dark' : 'light')} 
-              isChecked={theme === 'dark'} 
-          />
-          </h1>
-        )}
-      </ThemeToggler>
+    <h1><ThemeToggle /></h1>
       <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />
