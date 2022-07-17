@@ -16,10 +16,10 @@ require("prismjs/plugins/line-numbers/prism-line-numbers.css")
 
 const GlobalStyle = createGlobalStyle``
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement = ({ element, props }) => {
   <>
     <GlobalStyle />
-    {element}
+    <Layout {...props}>{element}</Layout>
   </>
 }
 
