@@ -11,7 +11,7 @@ const SiteHeader = props => {
   const [open, setOpen] = useState(false);
   const node = useRef(); 
   useOnClickOutside(node, () => setOpen(false));
-
+  console.log(open)
   return (
     <>
     {/* <h1><ThemeToggle /></h1> */}
