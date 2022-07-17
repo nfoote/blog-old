@@ -14,7 +14,7 @@ const SiteHeader = props => {
 
   return (
     <>
-    <h1><ThemeToggle /></h1>
+    {/* <h1><ThemeToggle /></h1> */}
       <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} />

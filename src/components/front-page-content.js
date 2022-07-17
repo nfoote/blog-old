@@ -90,7 +90,7 @@ const CardContainer = ({ children, location }) => {
   return(
     <div className="card-container">
       <Layout location={location} title="home">
-      <Seo title="Home" />
+        <Seo title="Home" />
         {children && children}
       </Layout>
     </div>
