@@ -7,8 +7,6 @@ import sendImage from '../images/svg/send2.svg'
 import frontPageContent from '../resources/front-page-content.json'
 import Card from './cards/Card';
 
-import Layout from './layout';
-import Seo from './seo';
 
 const BlogPost = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug
@@ -89,10 +87,7 @@ const Form = () => {
 const CardContainer = ({ children, location }) => {
   return(
     <div className="card-container">
-      <Layout location={location} title="home">
-        <Seo title="Home" />
         {children}
-      </Layout>
     </div>
   );
 }
@@ -102,8 +97,8 @@ const FrontPageContent = ({ location, blogPost }) => {
       <>
         <BallApp />
         <CardContainer location={location}>
-        <h1 className="hero-content">Nick Foote</h1>  
-        <img className="diagram" src={diagram} alt="Man standing next to a puppy with coffee in hand." />
+          <h1 className="hero-content">Nick Foote</h1>  
+          <img className="diagram" src={diagram} alt="Man standing next to a puppy with coffee in hand." />
             {frontPageContent.data.map((content) => {
               return (
                 <Fragment key={content.type}>
@@ -113,7 +108,7 @@ const FrontPageContent = ({ location, blogPost }) => {
                 </Fragment>
               );
             })}
-      </CardContainer>
+          </CardContainer>
       </>
     )
 }

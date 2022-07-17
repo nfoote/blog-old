@@ -5,12 +5,6 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import loadable from '@loadable/component'
-// import SiteHeader from "./site-header"
-
-
-// const Layout = loadable(() => import('../components/layout'), {
-//   fallback: <div>Loading...</div>,
-// })
 
 const Blog = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -18,7 +12,7 @@ const Blog = ({ data, location }) => {
 
   return (
 <>
-<Layout location={location} title={siteTitle}>
+{/* <Layout location={location} title={siteTitle}> */}
   <Seo title="All posts" />
       <Bio /> 
        <ol style={{ listStyle: `none` }}>
@@ -53,7 +47,7 @@ const Blog = ({ data, location }) => {
           )
         })}
       </ol>
-    </Layout>
+    {/* </Layout> */}
       </>  
   )
 }

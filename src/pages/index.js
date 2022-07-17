@@ -3,14 +3,20 @@ import { graphql } from "gatsby"
 import loadable from '@loadable/component'
 import pMinDelay from 'p-min-delay';
 import { Loader } from '../components/loader';
+import Layout from "../components/layout"
+import FrontPageContent from '../components/front-page-content';
 
-const FrontPageContent = loadable(() => pMinDelay(import('../components/front-page-content'), 1500), {
-  fallback: <Loader />,
-})
+// const FrontPageContent = loadable(() => pMinDelay(import('../components/front-page-content'), 1500), {
+//   fallback: <Loader />,
+// })
 
 const Index = ({ data, location }) => {
   const recentPost = data.allMarkdownRemark?.nodes[0];
-  return <FrontPageContent blogPost={recentPost} location={location} />
+  return (
+  // <Layout location={location}>
+    <FrontPageContent blogPost={recentPost} location={location} />
+  // </Layout>
+  )
 }
 
 export default Index
