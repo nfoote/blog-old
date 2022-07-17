@@ -91,7 +91,7 @@ const CardContainer = ({ children, location }) => {
     <div className="card-container">
       <Layout location={location} title="home">
         <Seo title="Home" />
-        {children && children}
+        {children}
       </Layout>
     </div>
   );
