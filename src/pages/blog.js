@@ -2,14 +2,15 @@ import React from 'react';
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
-// import Layout from "../components/layout"
+import Layout from "../components/layout"
 import Seo from "../components/seo"
 import loadable from '@loadable/component'
+// import SiteHeader from "./site-header"
 
-const Layout = loadable(() => import('../components/layout'), {
-  fallback: <div>Loading...</div>,
-})
 
+// const Layout = loadable(() => import('../components/layout'), {
+//   fallback: <div>Loading...</div>,
+// })
 
 const Blog = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
